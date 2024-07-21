@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "skilful-card-427702-d9",
+  "private_key_id": "6127ba829e5704d197b214b8746457c52c8adc1c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQCzPz9qNBn1PGDU\nqpJVOO7ok6k645cYLeYDPWLl1qC8dLFSabcmItpl8fwwoIo1PVHP/OWZ02uz1uog\nwZnDg0PeXwZEOfM+xzYgawxrTWwbtiSIlsbTapIBVA3bw765Rhnf4E+dmesWt2PZ\n0ILDkq3pa2PgkHHR3dwbsCMzCJgQo/Jv1aWZlwzdyjxrW9aIVVvId/4FJGrJ5kUC\nKBS/YpF2b2dKpj5hiJ6w3rY1xWDStgUNvllrEsS8JBTtKFN8J61j8XN1dAiRMb7I\nptoUSEG/D1QZ6pe2AWtiOBY6Ye2ORPTWh75J4RRhzNIdbKVm8wBuKa2FGAm8g95f\n9/DHZe0fAgMBAAECggEAHGudq0IEkEuDp48+BtDb9zjGadsWehPOTFrfg0VoafPE\nqSZa5ECSyVGOJMr87vEV4jjyfKqMK/vFAURBFEIMBkZMe4/b/2sIVtPc/bx3tN3I\nkCGmonSGHuYhZmQfKZ2G/RDB/uFIkur+pCq5OQzY51GK3gXOY4deXsOAPpdmaP4Z\nrM0OYDLaEcCAVAKB49CcQ6ZORiqMASithPDJ5AoUFv7Lom9/4cABiphb3cYE5Ztb\n7y+9MvrKxyClDGAk0kQKtwYSwI46iCEFZKPoAl5SyGYQAtGG5uj7WG7C0qdliN6r\ny48PoKJcPpZN+5X0qvlKr+S8J877XH+5MV/Bl8PKIQKBgQDhu96xcPkQp/JvqkKq\nVJuv8bqdQJsejFjeFg3JYc/FZFCus+kG3Pr7NXExoVaTlbBUpkeUk8zMYOpBhLZz\nLs1+/9Qo5XwtgT69DA5o3CfKmeDy+QAummPO//s6wOGAvunbIb36NRlIIh/7neI0\nMRg3avGywvP5KdfZ6fXAey/l/wKBgQDLR8GcnY9hr0o+7lWran//8vFHxl4wMwHz\nuFBPPvFq/VV55WMidK+nd3SidunC7dfQtJE03GXcDzZjicGwWYz1BhhcfpNPBU0L\nMnoZVbLYtj1NkwrdDVAjyoZTIIa9VuqLnV7q89Rm/Z2jwRQ5Bl+M6GEbz54fA69Q\nYBd5qgM44QKBgQDVj7thXsOUmYAJWyiVI1TkAauPKNdY8GkHPBAxDWPXmU+n6Tg2\nsQyWa/o6fSx+lmjrvSENlUN1vN8Du34tvQLX+0uKoYp5NsTXcDeVx2uyByFGXoNo\nk9KHvbC+5kqyVmzDT8n/lQrlLrvZfobK4APMMlaWzFCr04WOegVx5FntmwKBgQC/\nrgDl0jhSTzy+THRht4HM8eML4AQOhPpxOzoXD24Liafg0ikBY3AChIRpcaGJGkbn\nWGyXoL83muyZPVtzE23z2XR9OyliWMhGJ6m0W/fRmz4A+QdEW3pW1XCFz+TdgqiV\nT6Yh/BsrpjfQIo8UGmtc7f4rgEFEU3ArZQCdy29QYQKBgHeHkdzER2zrYGW9xfue\nYaqo2VWFTt25HQoP7ZMfmB2qOHdP+k42gdTal7xI27DVA7gAAYxVAz9N+2yIuGc8\nAp/LwYKXTiCWX5k/dOjH0pYJAwbu/YM8vQuDwcd5D3PMCqDY9Xccfnkf1kiEYVxl\nO/aXRAFH08HCGSa5WItMAinf\n-----END PRIVATE KEY-----\n",
+  "client_email": "rzpi-chat@skilful-card-427702-d9.iam.gserviceaccount.com",
+  "client_id": "117330774525344197610",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/rzpi-chat%40skilful-card-427702-d9.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
