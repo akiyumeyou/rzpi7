@@ -13,14 +13,25 @@ from pydrive.drive import GoogleDrive
 from oauth2client.service_account import ServiceAccountCredentials
 import random
 
+# デバッグ用のログメッセージ
+print("Starting script...")
+
 # Google Cloud Text-to-Speech API の初期化
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/potz/potzftc/rzpi-chat.json"
-client = texttospeech.TextToSpeechClient()
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/home/satoaki/aichat/2024_rzpi_py/rzpi_chat.json"
+try:
+    client = texttospeech.TextToSpeechClient()
+    print("Google Cloud Text-to-Speech client initialized successfully.")
+except Exception as e:
+    print(f"Failed to initialize Google Cloud Text-to-Speech client: {e}")
 
 # Google Drive API の認証情報設定
-SERVICE_ACCOUNT_FILE = '/home/potz/potzftc/rzpi-chat.json'
+SERVICE_ACCOUNT_FILE = '/home/satoaki/aichat/2024_rzpi_py/rzpi_chat.json'
 SCOPES = ['https://www.googleapis.com/auth/drive']
-creds = ServiceAccountCredentials.from_json_keyfile_name(SERVICE_ACCOUNT_FILE, SCOPES)
+try:
+    creds = ServiceAccountCredentials.from_json_keyfile_name(SERVICE_ACCOUNT_FILE, SCOPES)
+    print("Google Drive credentials initialized successfully.")
+except Exception as e:
+    print(f"Failed to initialize Google Drive credentials: {e}")
 
 # VOSKのログレベルを抑制
 os.environ['VOSK_LOG_LEVEL'] = '0'
@@ -44,6 +55,7 @@ def recognize_speech_from_mic():
 
     with microphone as source:
         recognizer.adjust_for_ambient_noise(source)
+        print("Listening for speech...")  # デバッグ用ログ
         audio = recognizer.listen(source)
 
     try:
@@ -58,6 +70,7 @@ def recognize_speech_from_mic():
         return ""
 
 async def generate_response(prompt, past_messages=[]):
+    print("Generating response...")  # デバッグ用ログ
     result = subprocess.run(
         ['node', 'ap.js', prompt, json.dumps(past_messages)],
         capture_output=True,
@@ -73,6 +86,7 @@ async def generate_response(prompt, past_messages=[]):
     return response_data['responseMessage'], response_data['pastMessages']
 
 async def text_to_speech(text):
+    print(f"Converting text to speech: {text}")  # デバッグ用ログ
     synthesis_input = texttospeech.SynthesisInput(text=text)
 
     voice = texttospeech.VoiceSelectionParams(
@@ -147,7 +161,7 @@ def run_js_summary_script(csv_filename):
         print(f"Failed to run JS script: {e}")  # デバッグ用ログ
         return None
 
-def upload_csv_to_drive(local_csv_path, file_name, folder_id=None):
+async def upload_csv_to_drive(local_csv_path, file_name, folder_id=None):
     try:
         print(f"Uploading {local_csv_path} to Google Drive as {file_name}")  # デバッグ用ログ
         # 認証情報の読み込み
@@ -179,6 +193,7 @@ async def main():
     conversations = []
 
     initial_message = "こんにちは、お話しできますか？"
+    print(f"Initial message: {initial_message}")  # デバッグ用ログ
     await text_to_speech(initial_message)
     conversations.append(("システム", initial_message))
 
@@ -188,9 +203,10 @@ async def main():
             conversations.append(("ユーザー", speech))
 
             if "終了" in speech:
+                print("Conversation ended by user.")  # デバッグ用ログ
                 break
 
-            # 30%の確率で相槌を挿入
+            # 70%の確率で相槌を挿入
             if random.random() < 0.7:
                 await play_nod_response()
 
@@ -204,8 +220,12 @@ async def main():
 
     if summary:
         now = datetime.now().strftime("%Y%m%d_%H%M%S")
-        upload_csv_to_drive("chat.csv", f"chat_{now}.csv", "1cwD7MZtll76L5rWFpRb7-egTwN0g26bG")
+        try:
+            await asyncio.wait_for(upload_csv_to_drive("chat.csv", f"chat_{now}.csv", "1cwD7MZtll76L5rWFpRb7-egTwN0g26bG"), timeout=30.0)
+        except asyncio.TimeoutError:
+            print("Failed to upload to Google Drive: Operation timed out")  # タイムアウトエラーログ
 
 if __name__ == "__main__":
+    print("Starting main function...")  # デバッグ用ログ
     asyncio.run(main())
 
